@@ -1,0 +1,28 @@
+<h1>以下の内容で作成してよろしいでしょうか？</h1>
+
+<div>
+  <tr>
+    <td>サークル名：<%= @group.name %></td>
+    <td>幹事（仮）：<%= @group.user_id %></td>
+    <td>主な活動場所：<%= @group.place %></td>
+    <td>主な活動時間：<%= @group.time %></td>
+    <td>概要：<%= @group.content %></td>
+  </tr>
+</div>
+
+<%= form_with( model:@group ,local:true ) do |f| %>
+  <p><%= f.hidden_field :name %></p>
+  <p><%= f.hidden_field :place %></p>
+  <p><%= f.hidden_field :time %></p>
+  <p><%= f.hidden_field :content %></p>
+  <p><%= f.submit :作成する %></p>
+<% end %>
+
+<%= form_with( model:@group ,local:true ,url:new_group_path ,method:'get' ) do |f| %>
+  <p><%= f.hidden_field :name %></p>
+  <p><%= f.hidden_field :place %></p>
+  <p><%= f.hidden_field :time %></p>
+  <p><%= f.hidden_field :content %></p>
+  <p><%= f.submit :戻る ,name:'back' %></p>
+
+<% end %>

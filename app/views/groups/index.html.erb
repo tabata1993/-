@@ -1,0 +1,14 @@
+<h1>サークル一覧</h1>
+
+<% @groups.each do |group| %>
+<div>
+  <tr>
+    <td>サークル名：<%= group.name %></td>
+    <td>幹事（仮）：<%= group.user_id %></td>
+    <td>主な活動場所：<%= group.place %></td>
+    <td>主な活動時間：<%= group.time %></td>
+    <td>概要：<%= group.content %></td>
+  </tr>
+</div>
+
+<% end %>

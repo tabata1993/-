@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>シュミティア -趣味の幅を広げるサイト- </title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <tr>
+        <td><%= link_to "サークル一覧",groups_path %></td>
+        <td><%= link_to "サークルを作成する",new_group_path %></td>
+      </tr>
+    </header>
+
+
+    <%= yield %>
+  </body>
+</html>
