@@ -14,6 +14,18 @@
         <td><%= link_to "サークル一覧",groups_path %></td>
         <td><%= link_to "サークルを作成する",new_group_path %></td>
       </tr>
+      <% if logged_in? %>
+        <tr>
+          <td><%= link_to "MyPage", user_path(current_user.id) %></td>
+          <td><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></td>
+        </tr>
+      <% else %>
+        <tr>
+          <td><%= link_to "ユーザー新規登録", new_user_path %></td>
+          <td><%= link_to "ログイン", new_session_path %></td>
+        </tr>
+      <% end %>
+
     </header>
 
 

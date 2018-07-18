@@ -1,0 +1,34 @@
+<h1>以下の内容で作成してよろしいでしょうか？</h1>
+
+<div>
+  <tr>
+    <td>名前：<%= @user.name %></td>
+    <td>email：<%= @user.email %></td>
+    <td>password：<%= "●" * @user.password.split(//).size %></td>
+    <td>性別：<%= @user.sex %></td>
+    <td>年齢：<%= @user.age %></td>
+    <td>自己紹介：<%= @user.introduction %></td>
+
+  </tr>
+</div>
+
+<%= form_with( model:@user ,local:true ) do |f| %>
+  <p><%= f.hidden_field :name %></p>
+  <p><%= f.hidden_field :email %></p>
+  <p><%= f.hidden_field :password %></p>
+  <p><%= f.hidden_field :password_confirmation %></p>
+  <p><%= f.hidden_field :sex %></p>
+  <p><%= f.hidden_field :age %></p>
+  <p><%= f.hidden_field :introduction %></p>
+  <p><%= f.submit :作成する %></p>
+<% end %>
+
+<%= form_with( model:@user ,local:true ,url:new_user_path ,method:'get' ) do |f| %>
+  <p><%= f.hidden_field :name %></p>
+  <p><%= f.hidden_field :email %></p>
+  <p><%= f.hidden_field :sex %></p>
+  <p><%= f.hidden_field :age %></p>
+  <p><%= f.hidden_field :introduction %></p>
+  <p><%= f.submit :戻る ,name:'back' %></p>
+
+<% end %>
