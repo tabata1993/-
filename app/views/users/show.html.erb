@@ -1,5 +1,17 @@
 <h1><%= @user.name %>さんのページ</h1>
-  <p>email：<%= @user.email %></p>
   <p>性別：<%= @user.sex %></p>
   <p>年齢：<%= @user.age %></p>
   <p>自己紹介：<%= @user.introduction %></p>
+
+<% if @user.id == current_user.id %>
+  <p>email：<%= @user.email %></p>
+  <p><%= link_to 'プロフィールの編集', edit_user_path(id: @user.id),data: { confirm: '本当に編集してよろしいですか？' } %></p>
+  <p><%= link_to 'メールとパスワードの編集',pass_edit_users_path(id: @user.id),data: { confirm: '本当に編集してよろしいですか？' } %></p>
+<% end %>
+
+<h2>参加しているサークル</h2>
+  <% @join_groups.each do |group| %>
+    <%= "【" if group.user_id == @user.id %>
+    <%= link_to group.name, group_path(group.id) %>
+    <%= "】" if group.user_id == @user.id %>
+  <% end %>

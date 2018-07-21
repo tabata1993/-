@@ -1,0 +1,26 @@
+<h1><%= @group.name %>のページ</h1>
+<p>代表：<%= link_to @manager_user.name, user_path(@manager_user.id) %></p>
+<p>主な活動場所：<%= @group.place %></p>
+<p>主な活動時間：<%= @group.time %></p>
+<p>概要：<%= @group.content %></p>
+
+<% if @group.user_id == current_user.id %>
+  <p>あなたは代表です。</p>
+  <p><%= link_to 'サークル情報の編集', edit_group_path(id: @group.id),data: { confirm: '本当に編集してよろしいですか？' } %></p>
+  <p><%= link_to '代表権限を受け渡す', manager_edit_groups_path(id: @group.id),data: { confirm: '権限受け渡し画面に移行してよろしいですか？' } if @member_user.count > 2 %></p>
+<% else %>
+  <% if @join.present? %>
+    <%= link_to 'サークルから退会する', join_path(id: @group.id), method: :delete %>
+  <% else %>
+    <%= link_to 'サークルに参加する', joins_path(group_id: @group.id), method: :post %>
+  <% end %>
+<% end %>
+
+<div>
+  <p>参加者一覧</p>
+  <p>代表：<%= link_to @manager_user.name, user_path(@manager_user.id) %></p>
+    <% @member_user.each do |user| %>
+      <%= link_to user.name, user_path(user.id) unless user == @manager_user %>
+    <% end %>
+
+</div>

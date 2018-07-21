@@ -1,0 +1,19 @@
+<h1>メールとパスワードの変更</h1>
+
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
+<% end %>
+
+
+<%= form_with( model:@user ,local:true )do |f| %>
+  <p><%= f.label :mail %></p>
+  <p><%= f.text_field :email %></p>
+  <p><%= f.label :新しいpassword %></p>
+  <p><%= f.password_field :password %></p>
+  <p><%= f.label :"新しいpassword(確認)" %></p>
+  <p><%= f.password_field :password_confirmation %></p>
+
+  <p><%= f.submit :変更する ,name:'pass_edit' %></p>
+<% end %>

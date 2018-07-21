@@ -1,0 +1,22 @@
+<h1>管理者権限受け渡し画面</h1>
+
+<% if @group.errors.any? %>
+  <% @group.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
+<% end %>
+
+<p>受け渡したいメンバーを選択してください。</p>
+<%= form_with( model:@group ,local:true )do |f| %>
+  <% @member_user.each_with_index do |user,i| %>
+    <% unless user == @manager_user %>
+      <%= user.name  %>
+      <% if i == 0 %>
+        <%= f.radio_button :user_id,user.id, checked:"checked" if i == 0 %>
+      <% else %>
+        <%= f.radio_button :user_id,user.id %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <p><%= f.submit :送信,data: { confirm: '権限を受け渡すと元には戻せません。よろしいですか？' } %></p>
+<% end %>

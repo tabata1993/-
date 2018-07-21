@@ -12,6 +12,7 @@
 
 <%= form_with( model:@group ,local:true ) do |f| %>
   <p><%= f.hidden_field :name %></p>
+  <p><%= f.hidden_field :user_id %></p>
   <p><%= f.hidden_field :place %></p>
   <p><%= f.hidden_field :time %></p>
   <p><%= f.hidden_field :content %></p>

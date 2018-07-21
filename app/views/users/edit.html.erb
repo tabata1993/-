@@ -1,0 +1,21 @@
+<h1>ユーザー情報編集</h1>
+
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
+<% end %>
+
+
+<%= form_with( model:@user ,local:true )do |f| %>
+  <p><%= f.label :ユーザー名 %></p>
+  <p><%= f.text_field :name %></p>
+  <p><%= f.label :性別 %></p>
+  <p><%= f.text_field :sex %></p>
+  <p><%= f.label :年齢 %></p>
+  <p><%= f.text_field :age %></p>
+  <p><%= f.label :自己紹介 %></p>
+  <p><%= f.text_field :introduction %></p>
+
+  <p><%= f.submit :変更する %></p>
+<% end %>

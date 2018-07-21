@@ -4,10 +4,10 @@
 <div>
   <tr>
     <td>サークル名：<%= group.name %></td>
-    <td>幹事（仮）：<%= group.user_id %></td>
     <td>主な活動場所：<%= group.place %></td>
     <td>主な活動時間：<%= group.time %></td>
     <td>概要：<%= group.content %></td>
+    <td><%= link_to '詳細',group_path(group.id) %></td>
   </tr>
 </div>
 
