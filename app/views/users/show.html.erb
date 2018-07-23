@@ -19,4 +19,5 @@
     <%= "【" if group.user_id == @user.id %>
     <%= link_to group.name, group_path(group.id) %>
     <%= "】" if group.user_id == @user.id %>
+    <%= link_to "掲示板", board_path(group.id) %>
   <% end %>

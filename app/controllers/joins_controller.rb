@@ -3,7 +3,7 @@ class JoinsController < ApplicationController
   def create
     @join = current_user.joins.create(group_id: params[:group_id])
     @group = Group.find_by(id: @join.group_id)
-    @manager_user = User.find_by(id: @group.user_id)
+    @manager_user = @group.user
     @member_user = current_user
     JoinMailer.join_mail(@group,@manager_user,@member_user).deliver
     redirect_to group_path(params[:group_id]), notice: "サークルに参加しました。"

@@ -1,0 +1,37 @@
+<h1><%= @group.name %>の掲示板</h1>
+
+<div>
+  <%= form_with( model:@board ,local:true ,url:boards_path ,method:'post' )do |f| %>
+
+    <%= f.hidden_field :group_id %>
+    <%= f.hidden_field :user_id %>
+    <p><%= f.label :書き込み内容 %></p>
+    <p><%= f.text_field :content %></p>
+    <p><%= f.submit :送信 ,data: { confirm: '書き込んでよろしいですか？' }%></p>
+  <% end %>
+</div>
+
+<h2><%= link_to 'サークルHOME',group_path(@group.id) %></h2>
+
+
+  <% @boards.each do |board| %>
+    <div>
+      <tr>
+        <td>投稿者：<%= board.user.name %></td>
+        <td>かきこみ：<%= board.content %></td>
+          <% if board.user == current_user  || board.group.user_id == current_user.id %>
+            <%if board.content != "書き込みは削除されました。" %>
+              <td><%= link_to '削除' ,board_path(board.id), method: :patch,data: { confirm: '書き込みを削除しますか？※枠は消えません。' } %></td>
+            <% end %>
+          <% end %>
+      </tr>
+    </div>
+  <% end %>
+
+
+  <div>
+    <tr>
+      <td>投稿者：---</td>
+      <td>かきこみ：サークルの活動記録や、質問等を書き込みましょう！</td>
+    </tr>
+  </div>

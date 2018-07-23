@@ -10,7 +10,7 @@ class GroupsController < ApplicationController
 
   def show
     @join = current_user.joins.find_by(group_id: @group.id)
-    @manager_user = User.find_by(id: @group.user_id)
+    @manager_user = @group.user
     @member_user = @group.join_users
   end
 
@@ -43,7 +43,7 @@ class GroupsController < ApplicationController
 
   def manager_edit
     @member_user = @group.join_users
-    @manager_user = User.find_by(id: @group.user_id)
+    @manager_user = @group.user
   end
 
   def update
