@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     end
   end
 
-
   resources :sessions,only:[:new,:create,:destroy]
 
   resources :groups do
@@ -19,5 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :joins,only:[:create,:destroy]
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
+  resources :boards
 end

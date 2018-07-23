@@ -6,7 +6,7 @@
     <td>サークル名：<%= group.name %></td>
     <td>主な活動場所：<%= group.place %></td>
     <td>主な活動時間：<%= group.time %></td>
-    <td>概要：<%= group.content %></td>
+    <td>参加人数：<%= group.join_users.count %></td>
     <td><%= link_to '詳細',group_path(group.id) %></td>
   </tr>
 </div>
