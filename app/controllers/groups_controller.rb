@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :login_sender,only:[:show,:new,:confirm,:create,:edit,:update,:destroy]
+  before_action :login_check,only:[:show,:new,:confirm,:create,:edit,:update,:destroy]
   before_action :set_group,only:[:show,:edit,:manager_edit,:update]
   before_action :other_than_manager_edit_block,only:[:edit,:manager_edit]
 
@@ -61,13 +61,6 @@ private
 
   def set_group
     @group = Group.find(params[:id])
-  end
-
-  def login_sender
-    if logged_in?
-    else
-      redirect_to new_session_path,notice:"シュミティアを使うにはログインしてください"
-    end
   end
 
   def other_than_manager_edit_block

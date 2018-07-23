@@ -1,12 +1,13 @@
 class JoinsController < ApplicationController
-
+  before_action :login_check
+  
   def create
-    @join = current_user.joins.create(group_id: params[:group_id])
-    @group = Group.find_by(id: @join.group_id)
+    join = current_user.joins.create(group_id: params[:group_id])
+    @group = join.group
     @manager_user = @group.user
     @member_user = current_user
     JoinMailer.join_mail(@group,@manager_user,@member_user).deliver
-    redirect_to group_path(params[:group_id]), notice: "サークルに参加しました。"
+    redirect_to board_path(params[:group_id]), notice: "サークルに参加しました!掲示板で報告しましょう！"
   end
 
   def destroy

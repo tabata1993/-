@@ -5,6 +5,8 @@
 
     <%= f.hidden_field :group_id %>
     <%= f.hidden_field :user_id %>
+    <p><%= f.label :image %></p>
+    <p><%= f.file_field :image %></p>
     <p><%= f.label :書き込み内容 %></p>
     <p><%= f.text_field :content %></p>
     <p><%= f.submit :送信 ,data: { confirm: '書き込んでよろしいですか？' }%></p>
@@ -13,11 +15,22 @@
 
 <h2><%= link_to 'サークルHOME',group_path(@group.id) %></h2>
 
+<% if @group.user_id == current_user.id %>
+<% else %>
+  <% if @join.present? %>
+    <%= link_to 'サークルから退会する', join_path(id: @group.id),data: { confirm: 'サークルから退会します、よろしいですか？' }, method: :delete %>
+  <% else %>
+    <%= link_to 'サークルに参加する', joins_path(group_id: @group.id),data: { confirm: 'サークルに参加すると代表にメールアドレスが公開されます。よろしいですか？' }, method: :post %>
+  <% end %>
+<% end %>
+
 
   <% @boards.each do |board| %>
     <div>
       <tr>
         <td>投稿者：<%= board.user.name %></td>
+        <td>投稿日時：<%= simple_time(board[:created_at] ) %></td>
+        <td><%= image_tag board.image unless board.image == nil %></td>
         <td>かきこみ：<%= board.content %></td>
           <% if board.user == current_user  || board.group.user_id == current_user.id %>
             <%if board.content != "書き込みは削除されました。" %>
@@ -31,7 +44,8 @@
 
   <div>
     <tr>
-      <td>投稿者：---</td>
+      <td>投稿者：------</td>
+      <td>投稿日時：<%= simple_time(@group[:created_at] ) %></td>
       <td>かきこみ：サークルの活動記録や、質問等を書き込みましょう！</td>
     </tr>
   </div>
