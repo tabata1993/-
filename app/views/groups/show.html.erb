@@ -28,7 +28,7 @@
         <%= link_to 'サークルを　　　削除する',group_path(id: @group.id), method: :delete,
         data: { confirm: '本当に編集してよろしいですか？' } %>
       </p>
-      <%if @member_user.count > 2 %>
+      <%if @member_user.count > 1 %>
         <p class="link_btn">
           <%= link_to '代表者を変える',manager_edit_groups_path(id: @group.id),
           data: { confirm: '権限受け渡し画面に移行してよろしいですか？' } %>
