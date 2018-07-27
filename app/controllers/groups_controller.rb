@@ -1,11 +1,14 @@
 class GroupsController < ApplicationController
   before_action :login_check,only:[:show,:new,:confirm,:create,:edit,:update,:destroy]
-  before_action :set_group,only:[:show,:edit,:manager_edit,:update]
-  before_action :other_than_manager_edit_block,only:[:edit,:manager_edit]
+  before_action :set_group,only:[:show,:edit,:manager_edit,:update,:destroy]
+  before_action :other_than_manager_edit_block,only:[:edit,:manager_edit,:destroy]
 
+  def home
+    index
+  end
 
   def index
-    @groups = Group.all
+    @groups = Group.all.order('updated_at DESC')
   end
 
   def show
@@ -52,6 +55,11 @@ class GroupsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @group.destroy
+    redirect_to groups_path,notice:"グループを削除しました。"
   end
 
 private

@@ -1,3 +1,62 @@
-// Place all the styles related to the boards controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.submit_box{
+  margin: 20px 0px 0px 100px;
+  width: 640px;
+  border: double 5px #50d24e;
+  background-color: #daf0da;
+}
+
+.submit_box_info{
+  font-family: "arial unicode ms";
+  background: #fafafa;
+  margin-top: 15px;
+  border-left: solid 6px #8be35c;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.33);
+}
+
+.submit_box p{
+  margin-left: 15px;
+}
+
+.board_show_link_btn{
+  margin-top: 20px;
+  margin-left: 150px;
+  margin-bottom: 10px;
+  font-size: 3rem !important;
+  width: 400px !important;
+  display: inline-block !important;
+}
+
+.board_show_join_btn{
+  display: inline-block !important;
+}
+
+.boards_box{
+
+}
+
+.boards_box{
+  width: 900px;
+  margin:45px 0px 30px 100px;
+  padding-top: 50px;
+  position: relative;
+  padding: 0.5em 1.5em;
+  background-color: rgba(#ffffff, 0.8);
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+}
+.boards_box:before, .boards_box:after{
+  content: '';
+  position: absolute;
+  top: -10px;
+  width: 2px;
+  height: -webkit-calc(100% + 20px);
+  height: calc(100% + 20px);
+  background-color: black;
+}
+.boards_box:before {left: 10px;}
+.boards_box:after {right: 10px;}
+
+.boards_info{
+  padding-left: 2px;
+  border-left: solid 0.5px;
+}

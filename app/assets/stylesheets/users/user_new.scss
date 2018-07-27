@@ -1,0 +1,47 @@
+.user_new_box{
+  height: 530px;
+  width: 430px;
+  margin: 50px auto;
+  position: relative;
+  padding: 0.5em 1.5em;
+  background-color: rgba(#ffffff, 0.8);
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+}
+.user_new_box:before,.user_new_box:after{
+  content: '';
+  position: absolute;
+  top: -10px;
+  width: 2px;
+  height: -webkit-calc(100% + 20px);
+  height: calc(100% + 20px);
+  background-color: black;
+}
+.user_new_box:before {left: 10px;}
+.user_new_box:after {right: 10px;}
+
+.site_title_user_new{
+  text-align: center;
+  margin-right: 50px;
+}
+
+.user_new_form_left{
+  display: inline-block;
+}
+
+.user_new_form_right{
+  margin-left: 50px;
+  display: inline-block;
+}
+
+.user_new_btn{
+  float: right;
+  margin-top: 30px;
+  margin-right: 5px;
+  width: 120px;
+}
+
+.user_confirm_introduction{
+  width: 280px;
+  border:1px solid;
+}

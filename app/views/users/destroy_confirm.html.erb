@@ -1,0 +1,8 @@
+<% @page_title = "本当にアカウントを削除しますか？" %>
+<h1 class="page_title">本当にアカウントを削除しますか？</h1>
+
+<div class="user_destroy_box">
+  <h2>アカウントを削除すると元には戻せません。</h2>
+  <p class="link_btn user_destroy_btn"><%= link_to 'アカウント削除', user_path(id: @user.id), method: :delete,data: { confirm: 'アカウントを削除します、よろしいですか？' } %></p>
+  <p class="link_btn user_destroy_btn"><%= link_to 'もどる', user_path(id: @user.id) %></p>
+</div>

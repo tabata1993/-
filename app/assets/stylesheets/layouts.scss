@@ -1,0 +1,111 @@
+html{
+  height: 100%;
+}
+
+body {
+  background-image: url("/images/back5.png");
+  position: relative;
+  min-height: 100%;
+}
+
+
+.wrap{
+  padding-bottom: 150px;
+}
+
+.header_area{
+  width: 100%;
+  height: 90px;
+  background-color: rgba(#f1f1f1, 0.8);
+  border-bottom: inset 1px #1c3b60;
+}
+
+.site_title{
+}
+
+.site_title img{
+  margin: 10px 0px 10px 45px;
+  padding-right: 4px;
+  border-right: groove 0.5px #4e4e4e;
+}
+
+.site_title i{
+  font-family: "Comic Sans MS";
+  font-size: 2.4rem;
+}
+
+.site_title p{
+  padding-left: 30px;
+  margin-top: -5px;
+  font-family: "arial unicode ms";
+}
+
+.login_area{
+  display: inline-block;
+  float:right;
+  margin-top: -50px;
+  margin-right: 10px;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+.info_alea{
+  clear:both;
+  margin: 20px 10px 0px 20px;
+}
+
+.info_btn{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #32cd24;
+    color: #FFF;
+    border-bottom: solid 4px #414942;
+    border-radius: 3px;
+}
+
+.info_btn:hover {
+	opacity: 0.7 ;
+  text-decoration: none;
+}
+
+.info_btn:active {
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+    border-bottom: none;
+}
+
+.notice{
+  font-family: "HiraKakuPro-W6";
+  margin-top: 10px;
+  font-size: 1.5rem;
+  background-color:#f1ab10;
+}
+
+.page_title{
+  font-family: "HiraKakuPro-W6";
+  margin: 30px 0px 0px 30px;
+  display: inline-block;
+  position: relative;
+  background-color: rgba(#ffffff, 0.4);
+  border-bottom: double 5px #e8ae18;
+}
+
+
+.fotter_area {
+  width: 100%;
+  background-color: rgba(21, 23, 24, 0.8);
+  padding: 20px 0 10px 0;
+  color: #f3f9ec;
+  margin: auto;
+  margin-top: 60px;
+  position: absolute;
+  font-size: 15px;
+  bottom:0;
+  height: 80px;
+}
+
+.fotter_area p{
+  text-align: center;
+}

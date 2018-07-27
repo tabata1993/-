@@ -1,28 +1,30 @@
-<h1>以下の内容で作成してよろしいでしょうか？</h1>
+<% @page_title = "サークルをつくる" %>
+<h1 class="page_title">以下の内容で作成してよろしいでしょうか？</h1>
 
-<div>
-  <tr>
-    <td>サークル名：<%= @group.name %></td>
-    <td>主な活動場所：<%= @group.place %></td>
-    <td>主な活動時間：<%= @group.time %></td>
-    <td>概要：<%= @group.content %></td>
-  </tr>
+<div class="form_box">
+  <h4>サークル名：<%= @group.name %></h4>
+  <label class="date_time_field">活動場所：<%= @group.place %></label>
+  <label class="date_time_field">活動時間：<%= @group.time %></label>
+  <p class="form_content_field"><%= @group.content %></p>
+
+  <%= form_with( model:@group ,local:true ,url:new_group_path ,method:'get' ) do |f| %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :place %>
+    <%= f.hidden_field :time %>
+    <%= f.hidden_field :content %>
+    <p class="form_submit">
+      <%= f.submit :戻る ,name:'back' %>
+    </p>
+  <% end %>
+  <%= form_with( model:@group ,local:true ) do |f| %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :place %>
+    <%= f.hidden_field :time %>
+    <%= f.hidden_field :content %>
+    <p class="form_submit">
+      <%= f.submit :作成する %>
+    </p>
+  <% end %>
+
 </div>
-
-<%= form_with( model:@group ,local:true ) do |f| %>
-  <p><%= f.hidden_field :name %></p>
-  <p><%= f.hidden_field :user_id %></p>
-  <p><%= f.hidden_field :place %></p>
-  <p><%= f.hidden_field :time %></p>
-  <p><%= f.hidden_field :content %></p>
-  <p><%= f.submit :作成する %></p>
-<% end %>
-
-<%= form_with( model:@group ,local:true ,url:new_group_path ,method:'get' ) do |f| %>
-  <p><%= f.hidden_field :name %></p>
-  <p><%= f.hidden_field :place %></p>
-  <p><%= f.hidden_field :time %></p>
-  <p><%= f.hidden_field :content %></p>
-  <p><%= f.submit :戻る ,name:'back' %></p>
-
-<% end %>

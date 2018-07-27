@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  root to: 'groups#index'
+  root to: 'groups#home'
 
   resources :users do
     collection do
       post :confirm
       get :pass_edit
+      get :destroy_confirm
     end
   end
 
@@ -18,7 +19,8 @@ Rails.application.routes.draw do
   end
 
   resources :joins,only:[:create,:destroy]
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   resources :boards
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

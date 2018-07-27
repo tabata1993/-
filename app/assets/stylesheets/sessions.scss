@@ -1,3 +1,21 @@
-// Place all the styles related to the sessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.sessions_new_box{
+  height: 300px;
+  width: 430px;
+  margin: 50px auto;
+  position: relative;
+  padding: 0.5em 1.5em;
+  background-color: rgba(#ffffff, 0.8);
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+}
+.sessions_new_box:before,.sessions_new_box:after{
+  content: '';
+  position: absolute;
+  top: -10px;
+  width: 2px;
+  height: -webkit-calc(100% + 20px);
+  height: calc(100% + 20px);
+  background-color: black;
+}
+.sessions_new_box:before {left: 10px;}
+.sessions_new_box:after {right: 10px;}

@@ -9,4 +9,7 @@ class User < ApplicationRecord
   before_save { email.downcase! }
   has_secure_password
   validates :password, presence: true, on: :create, length: { minimum: 6 }
+  validates :sex, length: { maximum: 10 }
+  validates :age, length: { maximum: 10 }
+  validates :introduction, length: { maximum: 40 }
 end

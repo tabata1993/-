@@ -1,4 +1,5 @@
-<h1>ユーザー新規登録</h1>
+<% @page_title = "ユーザー新規登録" %>
+<h1 class="page_title">ユーザー新規登録</h1>
 
 <% if @user.errors.any? %>
   <% @user.errors.full_messages.each do |msg| %>
@@ -6,22 +7,35 @@
   <% end %>
 <% end %>
 
+<div class="user_new_box">
+  <div class="site_title site_title_user_new">
+    <img src="/images/paws.png">
+    <i>Syumitier</i>
+    <p>-趣味の幅をゆるーく広げるサイト-</p>
+  </div>
 
-<%= form_with( model:@user ,local:true ,url: confirm_users_path )do |f| %>
-  <p><%= f.label :ユーザー名 %></p>
-  <p><%= f.text_field :name %></p>
-  <p><%= f.label :mail %></p>
-  <p><%= f.text_field :email %></p>
-  <p><%= f.label :password %></p>
-  <p><%= f.password_field :password %></p>
-  <p><%= f.label :"password(確認)" %></p>
-  <p><%= f.password_field :password_confirmation %></p>
-  <p><%= f.label :性別 %></p>
-  <p><%= f.text_field :sex %></p>
-  <p><%= f.label :年齢 %></p>
-  <p><%= f.text_field :age %></p>
-  <p><%= f.label :自己紹介 %></p>
-  <p><%= f.text_field :introduction %></p>
-
-  <p><%= f.submit :確認画面へ %></p>
-<% end %>
+  <%= form_with( model:@user ,local:true ,url: confirm_users_path )do |f| %>
+    <div class="user_new_form_left">
+      <p><%= f.label :ユーザー名※ %></p>
+      <p><%= f.text_field :name %></p>
+      <p><%= f.label :mail※ %></p>
+      <p><%= f.text_field :email %></p>
+      <p><%= f.label :password※ %></p>
+      <p><%= f.password_field :password %></p>
+      <p><%= f.label :"password(確認)※" %></p>
+      <p><%= f.password_field :password_confirmation %></p>
+    </div>
+    <div class="user_new_form_right">
+      <p><%= f.label :性別 %></p>
+      <p><%= f.text_field :sex %></p>
+      <p><%= f.label :年齢 %></p>
+      <p><%= f.text_field :age %></p>
+      <p><%= f.label :ひとこと %></p>
+      <p><%= f.text_area :introduction, :cols => 19, :rows => 4 %></p>
+    </div>
+    <div class="user_new_btn">
+      <p>※は必ず入力してください</p>
+      <p><%= f.submit :確認画面へ %></p>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,71 @@
+.header_btn{
+  display: inline-block;
+  width: 140px;
+  padding: 0.8em;
+  text-align: center;
+  text-decoration: none;
+  color: #32cd24;
+  background-color: rgba(#e8e8e8, 0.1);
+  border: 2px solid #32cd24;
+  border-radius: 3px;
+  transition: .4s;
+}
+.header_btn:hover{
+  background: #32cd24;
+  color: #fff;
+}
+
+
+.link_btn{
+  display: block;
+  position: relative;
+  width: 120px;
+  height: 60px;
+  padding: 0.8em;
+  font-size: 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  border:1px solid #32cd24;
+  background: #32cd24;
+  overflow: hidden;
+  z-index: 1 !important;
+}
+.link_btn a{
+  font-family: "HiraKakuPro-W6";
+  color: #fff;
+  text-decoration: none;
+}
+
+.link_btn:after{
+  content:"";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 0;
+  width: 100%;
+  background : #fff;
+  opacity: 0;
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  transition: 0.3s;
+  z-index: -1;
+}
+
+.link_btn:hover a {
+  color: #1b8213;
+}
+
+.link_btn:hover:after{
+  height: 250%;
+  opacity: 1;
+}
+.link_btn:active:after{
+  height: 350%;
+  opacity: 1;
+}
+
+.link_btn_in{
+  color: rgb(17, 39, 186);
+  border: rgba(#ffffff, 0);
+  background-color: rgba(#ffffff, 0);
+}

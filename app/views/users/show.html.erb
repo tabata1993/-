@@ -1,23 +1,35 @@
-<h1><%= @user.name %>さんのページ</h1>
-  <p>性別：<%= @user.sex %></p>
-  <p>年齢：<%= @user.age %></p>
-  <p>自己紹介：<%= @user.introduction %></p>
-  <% if @join_groups.find_by(user_id: current_user.id ) && @user.id != current_user.id %>
-    <p>email：<%= @user.email %></p>
-    <p>※自分が代表しているサークルの参加者のみメールアドレスが見えます</p>
+<h1 class="page_title"><%= @user.name %>さんのページ</h1>
+
+<div class="user_show_box">
+  <d>名前：<%= @user.name %></d>
+  <d>性別：<%= @user.sex %></d>
+  <d>年齢：<%= @user.age %></d>
+    <% if @join_groups.find_by(user_id: current_user.id ) && @user.id != current_user.id %>
+      <d>email：<%= @user.email %></d>
+    <% end %>
+
+  <% if @user.id == current_user.id %>
+    <d>email：<%= @user.email %></d>
+    <div>
+      <p class="link_btn user_show_btn"><%= link_to 'アカウント削除', destroy_confirm_users_path(id: @user.id),data: { confirm: '本当に削除してよろしいですか？自分が代表のサークルがあると削除できません' } %></p>
+      <p class="link_btn user_show_btn"><%= link_to 'プロフィール編集', edit_user_path(id: @user.id),data: { confirm: '本当に編集してよろしいですか？' } %></p>
+      <p class="link_btn user_show_btn"><%= link_to 'メールと　　　　パスワードの編集',pass_edit_users_path(id: @user.id),data: { confirm: '本当に編集してよろしいですか？' } %></p>
+    </div>
   <% end %>
 
-<% if @user.id == current_user.id %>
-  <p>email：<%= @user.email %></p>
-  <p><%= link_to 'プロフィールの編集', edit_user_path(id: @user.id),data: { confirm: '本当に編集してよろしいですか？' } %></p>
-  <p><%= link_to 'メールとパスワードの編集',pass_edit_users_path(id: @user.id),data: { confirm: '本当に編集してよろしいですか？' } %></p>
-<% end %>
+  <div class="introduction_box">
+    <p>ひとこと：</p>
+    <p><%= @user.introduction %></p>
+  </div>
 
-
-<h2>参加しているサークル</h2>
-  <% @join_groups.each do |group| %>
-    <%= "【" if group.user_id == @user.id %>
-    <%= link_to group.name, group_path(group.id) %>
-    <%= "】" if group.user_id == @user.id %>
-    <%= link_to "掲示板", board_path(group.id) %>
-  <% end %>
+  <div class="show_group_box">
+    <p>参加しているサークル（代表しているサークルは☆）</p>
+    <% @join_groups.each do |group| %>
+      <span class="show_group_box_in">
+        <%= "☆" if group.user_id == @user.id %>
+        <%= link_to group.name, group_path(group.id) %>
+        <%= link_to "掲示板", board_path(group.id) %>
+      </span>
+    <% end %>
+  </div>
+</div>

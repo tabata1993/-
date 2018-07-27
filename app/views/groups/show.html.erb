@@ -1,37 +1,63 @@
-<h1><%= @group.name %>のページ</h1>
-<p>代表：<%= link_to @manager_user.name, user_path(@manager_user.id) %></p>
-<p>主な活動場所：<%= @group.place %></p>
-<p>主な活動時間：<%= @group.time %></p>
-<p>参加人数：<%= @member_user.count %>人</p>
-<p>概要：<%= @group.content %></p>
-<p>代表者連絡先：
-  <% if @join.present? %>
-    <%= @manager_user.email %>
-  <% else %>
-    サークルに参加すると表示されます
-  <% end %>
-</p>
+<% @page_title = "#{@group.name}" %>
+<h1 class="page_title"><%= @group.name %>のページ</h1>
 
-<h2><%= link_to '掲示板へ',board_path(@group.id) %></h2>
-
-
-<% if @group.user_id == current_user.id %>
-  <p>あなたは代表です。</p>
-  <p><%= link_to 'サークル情報の編集', edit_group_path(id: @group.id),data: { confirm: '本当に編集してよろしいですか？' } %></p>
-  <p><%= link_to '代表権限を受け渡す', manager_edit_groups_path(id: @group.id),data: { confirm: '権限受け渡し画面に移行してよろしいですか？' } if @member_user.count > 2 %></p>
-<% else %>
-  <% if @join.present? %>
-    <%= link_to 'サークルから退会する', join_path(id: @group.id),data: { confirm: 'サークルから退会します、よろしいですか？' }, method: :delete %>
-  <% else %>
-    <%= link_to 'サークルに参加する', joins_path(group_id: @group.id),data: { confirm: 'サークルに参加すると代表にメールアドレスが公開されます。よろしいですか？' }, method: :post %>
-  <% end %>
-<% end %>
-
-<div>
-  <p>参加者一覧</p>
-  <p>代表：<%= link_to @manager_user.name, user_path(@manager_user.id) %></p>
-    <% @member_user.each do |user| %>
-      <%= link_to user.name, user_path(user.id) unless user == @manager_user %>
+<div class="group_show_box">
+  <d>代表：<%= link_to @manager_user.name, user_path(@manager_user.id) %></d>
+  <d>活動場所：<%= @group.place %></d>
+  <d>活動時間：<%= @group.time %></d>
+  <d>メンバー：<%= @member_user.count %>人</d>
+  <d>代表者連絡先：
+    <% if @join.present? %>
+      <%= @manager_user.email %>
+    <% else %>
+      サークルメンバーのみ表示されます
     <% end %>
+  </d>
+  <div class=show_content_box>
+    <p class=show_content_field><%= @group.content %></p>
+  </div>
+
+
+  <div class="show_btn_box">
+    <% if @group.user_id == current_user.id %>
+      <p class="link_btn">
+        <%= link_to 'サークル情報編集',edit_group_path(id: @group.id),
+        data: { confirm: '本当に編集してよろしいですか？' } %>
+      </p>
+      <p class="link_btn">
+        <%= link_to 'サークルを　　　削除する',group_path(id: @group.id), method: :delete,
+        data: { confirm: '本当に編集してよろしいですか？' } %>
+      </p>
+      <%if @member_user.count > 2 %>
+        <p class="link_btn">
+          <%= link_to '代表者を変える',manager_edit_groups_path(id: @group.id),
+          data: { confirm: '権限受け渡し画面に移行してよろしいですか？' } %>
+        </p>
+      <% end %>
+    <% else %>
+      <% if @join.present? %>
+        <p class="link_btn">
+          <%= link_to 'サークルから退会',join_path(id: @group.id),method: :delete,
+          data: { confirm: 'サークルから退会します、よろしいですか？' } %>
+        </p>
+      <% else %>
+        <p class="link_btn">
+          <%= link_to 'サークルに　　　参加する', joins_path(group_id: @group.id),method: :post,
+          data:{ confirm: 'サークルに参加すると代表にメールアドレスが公開されます。よろしいですか？' }%>
+        </p>
+      <% end %>
+    <% end %>
+    <p class="link_btn"><%= link_to '掲示板へ',board_path(@group.id) %></p>
+  </div>
+
+  <div class="show_member_box">
+    <p>参加者一覧</p>
+    <p>代表：<%= link_to @manager_user.name, user_path(@manager_user.id) %></p>
+    <% @member_user.each do |user| %>
+      <% unless user == @manager_user %>
+        <a class="show_member_box_in"><%= link_to user.name, user_path(user.id) %></a>
+      <% end %>
+    <% end %>
+  </div>
 
 </div>

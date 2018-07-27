@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user,only:[:show,:edit,:pass_edit,:update]
-  before_action :other_users_edit_block,only:[:edit,:pass_edit]
+  before_action :set_user,only:[:show,:edit,:pass_edit,:update,:destroy_confirm,:destroy]
+  before_action :other_users_edit_block,only:[:edit,:pass_edit,:destroy_confirm]
 
   def show
     @join_groups = @user.join_groups
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user.id)
+      redirect_to user_path(@user.id),notice:"アカウントを作成しました！"
     else
       render new_user_path
     end
@@ -45,6 +45,15 @@ class UsersController < ApplicationController
           render 'edit'
         end
       end
+  end
+
+  def  destroy_confirm
+      redirect_to user_path(params[:id]),notice:"自分が代表のサークルがある場合、アカウントは削除できません" if @user.groups.present?
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to root_path,notice:"ユーザー情報を削除しました。ご利用ありがとうございました。"
   end
 
 private

@@ -1,18 +1,22 @@
-<% if @group.errors.any? %>
-  <% @group.errors.full_messages.each do |msg| %>
-    <p><%= msg %></p>
+<div class="notice">
+  <% if @group.errors.any? %>
+    <% @group.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
 
-<%= form_with( model:@group ,local:true ,url: choose_new_or_edit )do |f| %>
-  <p><%= f.label :サークル名 %></p>
-  <p><%= f.text_field :name %></p>
-  <p><%= f.label :主な活動場所 %></p>
-  <p><%= f.text_field :place %></p>
-  <p><%= f.label :主な活動日時 %></p>
-  <p><%= f.text_field :time %></p>
-  <p><%= f.label :概要 %></p>
-  <p><%= f.text_field :content %></p>
-  <p><%= f.submit :送信 %></p>
-<% end %>
+<div class="form_box">
+  <%= form_with( model:@group ,local:true ,url: choose_new_or_edit )do |f| %>
+    <h4><%= f.label :サークル名： %><%= f.text_field :name %></h4>
+    <d class="date_time_field"><%= f.label :活動場所： %><%= f.text_field :place %></d>
+    <d class="date_time_field"><%= f.label :活動日時 %><%= f.text_field :time %></d>
+
+    <div class="form_content_field">
+      <p><%= f.label :概要 %></p>
+      <p><%= f.text_area :content , :cols => 90, :rows => 11.5 %></p>
+    </div>
+    <p class="form_submit"><%= f.submit :送信 %></p>
+  <% end %>
+</div>

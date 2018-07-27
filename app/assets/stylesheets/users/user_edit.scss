@@ -1,0 +1,21 @@
+.user_edit_box{
+  height: 400px;
+  width: 430px;
+  margin: 50px auto;
+  position: relative;
+  padding: 0.5em 1.5em;
+  background-color: rgba(#ffffff, 0.8);
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+}
+.user_edit_box:before,.user_edit_box:after{
+  content: '';
+  position: absolute;
+  top: -10px;
+  width: 2px;
+  height: -webkit-calc(100% + 20px);
+  height: calc(100% + 20px);
+  background-color: black;
+}
+.user_edit_box:before {left: 10px;}
+.user_edit_box:after {right: 10px;}

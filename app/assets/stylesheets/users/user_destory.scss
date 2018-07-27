@@ -1,0 +1,19 @@
+.user_destroy_box{
+  height:300px;
+  width: 430px;
+  margin: 40px 0px 0px 40px;
+  background: #ffffff;
+  border: double 6px #fc4922;
+}
+
+.user_destroy_btn{
+  float: left;
+  margin: 40px 0px 0px 50px;
+  display: inline;
+  border:1px solid #cd2e24 !important;
+  background: #cd2e24 !important;
+}
+
+.user_destroy_btn:hover a {
+  color: #cd2e24 !important;
+}

@@ -4,7 +4,7 @@ class BoardsController < ApplicationController
   def show
     @group = Group.find_by(id: params[:id])
     @join = current_user.joins.find_by(group_id: @group.id)
-    @boards = @group.boards
+    @boards = @group.boards.order('created_at DESC')
     @board = Board.new
     @board.group_id = @group.id
     @board.user_id = current_user.id

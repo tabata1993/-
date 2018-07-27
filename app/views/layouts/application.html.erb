@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>シュミティア -趣味の幅を広げるサイト- </title>
+    <title><%= page_title %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,26 +9,37 @@
   </head>
 
   <body>
-    <header>
-      <tr>
-        <td><%= link_to "サークル一覧",groups_path %></td>
-        <td><%= link_to "サークルを作成する",new_group_path %></td>
-      </tr>
-      <% if logged_in? %>
-        <tr>
-          <td><%= link_to "MyPage", user_path(current_user.id) %></td>
-          <td><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></td>
-        </tr>
-      <% else %>
-        <tr>
-          <td><%= link_to "ユーザー新規登録", new_user_path %></td>
-          <td><%= link_to "ログイン", new_session_path %></td>
-        </tr>
-      <% end %>
-    </header>
-    <p><%= notice %></p>
+    <div class="wrap">
+      <header class="header_area">
+        <div class="site_title">
+          <img src="/images/paws.png">
+          <i>Syumitier</i>
+          <p>-趣味の幅をゆるーく広げるサイト-</p>
+        </div>
+        <div class="login_area">
+          <% if logged_in? %>
+            <a><%= link_to "MyPage", user_path(current_user.id), class:"header_btn" %></a>
+            <a><%= link_to "ログアウト", session_path(current_user.id), method: :delete, class:"header_btn" %></a>
+          <% else %>
+            <a><%= link_to "新規登録", new_user_path, class:"header_btn" %></a>
+            <a><%= link_to "ログイン", new_session_path, class:"header_btn" %></a>
+          <% end %>
+        </div>
+      </header>
 
+      <div class="info_alea">
+          <%= link_to "HOME",root_path ,class:"info_btn"%>
+          <%= link_to "サークルを『さがす』",groups_path,class:"info_btn" %>
+          <%= link_to "サークルを『つくる』",new_group_path,class:"info_btn" %>
+      </div>
 
-    <%= yield %>
+      <p class="notice"><%= notice %></p>
+
+      <%= yield %>
+
+    </div>
+    <footer  class="fotter_area">
+      <p>tbt's exercises application</p>
+    </footer>
   </body>
 </html>

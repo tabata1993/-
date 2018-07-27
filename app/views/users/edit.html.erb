@@ -1,21 +1,25 @@
-<h1>ユーザー情報編集</h1>
+<% @page_title = "ユーザー情報を編集する" %>
+<h1 class="page_title">ユーザー情報を編集する</h1>
 
-<% if @user.errors.any? %>
-  <% @user.errors.full_messages.each do |msg| %>
-    <p><%= msg %></p>
+<div class="notice">
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
+<div class="user_edit_box">
+  <%= form_with( model:@user ,local:true )do |f| %>
+    <p><%= f.label :ユーザー名 %></p>
+    <p><%= f.text_field :name %></p>
+    <p><%= f.label :性別 %></p>
+    <p><%= f.text_field :sex %></p>
+    <p><%= f.label :年齢 %></p>
+    <p><%= f.text_field :age %></p>
+    <p><%= f.label :自己紹介 %></p>
+    <p><%= f.text_area :introduction, :cols => 19, :rows => 4 %></p>
 
-<%= form_with( model:@user ,local:true )do |f| %>
-  <p><%= f.label :ユーザー名 %></p>
-  <p><%= f.text_field :name %></p>
-  <p><%= f.label :性別 %></p>
-  <p><%= f.text_field :sex %></p>
-  <p><%= f.label :年齢 %></p>
-  <p><%= f.text_field :age %></p>
-  <p><%= f.label :自己紹介 %></p>
-  <p><%= f.text_field :introduction %></p>
-
-  <p><%= f.submit :変更する %></p>
-<% end %>
+    <p><%= f.submit :変更する %></p>
+  <% end %>
+</div>

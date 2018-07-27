@@ -1,15 +1,5 @@
-<h1>サークル一覧</h1>
+<% @page_title = "サークルをさがす" %>
 
-  <% @groups.each do |group| %>
-  <div>
-    <tr>
-      <td>サークル名：<%= group.name %></td>
-      <td>主な活動場所：<%= group.place %></td>
-      <td>主な活動時間：<%= group.time %></td>
-      <td>参加人数：<%= group.join_users.count %></td>
-      <td><%= link_to '詳細',group_path(group.id) %></td>
-      <td><%= link_to '掲示板',board_path(group.id) %></td>
-    </tr>
-  </div>
+<h1 class="page_title">サークル一覧</h1>
 
-<% end %>
+<%= render 'groups' %>

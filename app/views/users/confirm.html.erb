@@ -1,34 +1,45 @@
-<h1>以下の内容で作成してよろしいでしょうか？</h1>
+<% @page_title = "ユーザー新規登録" %>
+<h1 class="page_title">以下の内容で作成してよろしいでしょうか？</h1>
 
-<div>
-  <tr>
-    <td>名前：<%= @user.name %></td>
-    <td>email：<%= @user.email %></td>
-    <td>password：<%= "●" * @user.password.split(//).size %></td>
-    <td>性別：<%= @user.sex %></td>
-    <td>年齢：<%= @user.age %></td>
-    <td>自己紹介：<%= @user.introduction %></td>
 
-  </tr>
+<div class="user_new_box">
+  <div class="site_title site_title_user_new">
+    <img src="/images/paws.png">
+    <i>Syumitier</i>
+    <p>-趣味の幅をゆるーく広げるサイト-</p>
+  </div>
+
+  <div>
+    <div>
+      <p>名前：<%= @user.name %></p>
+      <p>email：<%= @user.email %></p>
+      <p>password：<%= "●" * @user.password.split(//).size %></p>
+      <p>性別：<%= @user.sex %></p>
+      <p>年齢：<%= @user.age %></p>
+      <p>ひとこと</p>
+      <p class="user_confirm_introduction"><%= @user.introduction %></p>
+    </div>
+
+  </div>
+  <div class="user_new_btn">
+    <%= form_with( model:@user ,local:true ) do |f| %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :email %>
+      <%= f.hidden_field :password %>
+      <%= f.hidden_field :password_confirmation %>
+      <%= f.hidden_field :sex %>
+      <%= f.hidden_field :age %>
+      <%= f.hidden_field :introduction %>
+      <p><%= f.submit :作成する %></p>
+    <% end %>
+
+    <%= form_with( model:@user ,local:true ,url:new_user_path ,method:'get' ) do |f| %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :email %>
+      <%= f.hidden_field :sex %>
+      <%= f.hidden_field :age %>
+      <%= f.hidden_field :introduction %>
+      <p><%= f.submit :戻る ,name:'back' %></p>
+    <% end %>
+  </div>
 </div>
-
-<%= form_with( model:@user ,local:true ) do |f| %>
-  <p><%= f.hidden_field :name %></p>
-  <p><%= f.hidden_field :email %></p>
-  <p><%= f.hidden_field :password %></p>
-  <p><%= f.hidden_field :password_confirmation %></p>
-  <p><%= f.hidden_field :sex %></p>
-  <p><%= f.hidden_field :age %></p>
-  <p><%= f.hidden_field :introduction %></p>
-  <p><%= f.submit :作成する %></p>
-<% end %>
-
-<%= form_with( model:@user ,local:true ,url:new_user_path ,method:'get' ) do |f| %>
-  <p><%= f.hidden_field :name %></p>
-  <p><%= f.hidden_field :email %></p>
-  <p><%= f.hidden_field :sex %></p>
-  <p><%= f.hidden_field :age %></p>
-  <p><%= f.hidden_field :introduction %></p>
-  <p><%= f.submit :戻る ,name:'back' %></p>
-
-<% end %>

@@ -1,0 +1,16 @@
+<div class="index_area">
+  <% @groups.each do |group| %>
+    <div class="index_box">
+      <h4><%= group.name %></h4>
+
+      <d class="index_info">活動場所：<%= group.place %></d>
+      <d class="index_info">活動時間：<%= group.time %></d>
+      <d class="index_info">メンバー：<%= group.join_users.count %>人</d>
+      <d class="index_info">最終更新：<%= simple_time( group.updated_at ) %></d>
+      <div class="index_link_area">
+        <p class="link_btn"><%= link_to 'サークルHOME',group_path(group.id) %></p>
+        <p class="link_btn"><%= link_to '掲示板',board_path(group.id) %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
