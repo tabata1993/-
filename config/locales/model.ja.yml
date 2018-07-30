@@ -11,7 +11,7 @@ ja:
         content: "内容"
       group:
         name: "サークル名"
-        place: "開催地"
+        place: "活動場所"
         time: "活動日時"
         content: "活動内容"
       user:
