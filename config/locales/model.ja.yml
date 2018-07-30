@@ -1,0 +1,26 @@
+ja:
+  activerecord:
+    models:
+      board: "かきこみ"
+      group: "サークル"
+      join: "サークルに参加"
+      user: "ユーザー"
+    attributes:
+      board:
+        image: "画像"
+        content: "内容"
+      group:
+        name: "サークル名"
+        place: "開催地"
+        time: "活動日時"
+        content: "活動内容"
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        current_password: "現在のパスワード"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "ログインを記憶"
+        sex: "性別"
+        age: "年齢"
+        introduction: "ひとこと"
