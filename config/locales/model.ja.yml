@@ -13,7 +13,7 @@ ja:
         name: "サークル名"
         place: "活動場所"
         time: "活動日時"
-        content: "活動内容"
+        content: "概要"
       user:
         name: "名前"
         email: "メールアドレス"
