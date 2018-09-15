@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user,only:[:show,:edit,:pass_edit,:update,:destroy_confirm,:destroy]
-  before_action :other_users_edit_block,only:[:edit,:pass_edit,:destroy_confirm]
+  before_action :correct_user,only:[:edit,:pass_edit,:destroy_confirm]
 
   def show
     @join_groups = @user.join_groups
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   end
 
   def  destroy_confirm
-      redirect_to user_path(params[:id]),notice:"自分が代表のサークルがある場合、アカウントは削除できません" if @user.groups.present?
+      redirect_to user_path(params[:id]),notice:"自分が代表のサークルがある場合、アカウントは削除できません。" if @user.groups.present?
   end
 
   def destroy
@@ -65,10 +65,9 @@ private
     @user = User.find(params[:id])
   end
 
-  def other_users_edit_block
+  def correct_user
     unless current_user.id == @user.id
       redirect_to user_path(params[:id]),notice:"他人のユーザー情報は変更できません。"
     end
   end
-
 end
