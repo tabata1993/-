@@ -1,24 +1,22 @@
 # README
+シュミティア　-趣味の幅をゆるーく広げるサイト-
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#Description
+シュミティアは新たな趣味を探す人のためのコミュニティサイトです。
 
-Things you may want to cover:
+趣味の幅を広げることをコンセプトとしており、様々なサークルに気楽に参加、退会できるようにしました。
 
-* Ruby version
+◯サークルを作成してメンバーを募ったり、サークルに参加したりできます。
+・サークル参加時にそのサークルの代表にmailが送信されます。
+・代表は自分のサークルの参加者のメールアドレスがすべて閲覧できます。
+・参加しているサークルはユーザーページに表示されます。
 
-* System dependencies
+◯サークル活動の記録や質問、連絡等のできる掲示板機能があります。
+・気軽に情報を集められるようメンバーでない人も掲示板の閲覧、書き込みできるようにしました。
+・書き込みを削除した場合、枠はのこり、「書き込みは削除されました。」と表示されます。
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Gem
+・bcrypt
+・carrierwave
+・mini_magick
+・jquery-rails
